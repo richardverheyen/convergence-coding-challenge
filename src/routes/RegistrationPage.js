@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuthUpdate } from "../contexts/AuthContext";
@@ -10,72 +10,56 @@ import {
   InputGender
 } from "../components/";
 
-class RegistrationPage extends Component {
-  constructor(props) {
-    super(props);
+function RegistrationPage() {
 
-    this.state = {
-      email: "",
-      pw: "",
-      dob: "",
-      gender: ""
-    }
-  }
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
 
-  handleSubmit(e) {
-    console.log('submit');
-  }
+  return (
+    <div className="RegistrationPage">
+      <Link to="/welcome">Go back</Link>
+      <h1>Create a new user</h1>
 
-  render() {
-    const { state } = this;
+      <form>
+        <InputEmail
+          value={email}
+          handleChange={e => setEmail(e.target.value)}
+          />
+        <InputPassword
+          value={pw}
+          handleChange={e => setPw(e.target.value)}
+          />
+        <InputPasswordCheck
+          pattern={pw}
+          />
+        <InputDob
+          value={dob}
+          handleChange={e => setDob(e.target.value)}
+          />
+        <InputGender
+          value={gender}
+          handleChange={e => setGender(e.target.value)}
+          />
 
-    return (
-      <div className="RegistrationPage">
-        <Link to="/welcome">Go back</Link>
-        <h1>Create a new user</h1>
+        <button
+          type="button"
+          disabled={Boolean(!email || !pw || !dob || !gender)}
+          onClick={useAuthUpdate({
+            email,
+            pw,
+            dob,
+            gender
+          })}
+          >
+          Create User
+        </button>
 
-        <form>
-          <InputEmail
-            value={state.email}
-            handleChange={e => this.setState({ email: e.target.value })}
-            />
-          <InputPassword
-            value={state.pw}
-            handleChange={e => this.setState({ pw: e.target.value })}
-            />
-          <InputPasswordCheck
-            pattern={state.pw}
-            />
-          <InputDob
-            value={state.dob}
-            handleChange={value => this.setState({ dob: value })}
-            />
-          <InputGender
-            value={state.gender}
-            handleChange={e => this.setState({ gender: e.target.value })}
-            />
+      </form>
 
-          <button
-            type="button"
-            disabled={Boolean(!state.email || !state.pw || !state.dob || !state.gender)}
-            onClick={this.handleSubmit}
-            >
-            Create User
-          </button>
-
-
-          {/*<button onClick={useAuthUpdate({
-              email: "foo@bar.com",
-              pw: "password123",
-              dob: "12/12/1233",
-              gender: "Female"
-            })
-          }>Submit User Data</button>*/}
-        </form>
-
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default RegistrationPage;
