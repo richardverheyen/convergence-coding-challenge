@@ -22,14 +22,17 @@ class RegistrationPage extends Component {
     }
   }
 
+  handleSubmit(e) {
+    console.log('submit');
+  }
+
   render() {
     const { state } = this;
 
-    console.log('render', {state});
     return (
       <div className="RegistrationPage">
         <Link to="/welcome">Go back</Link>
-        <h1>RegistrationPage</h1>
+        <h1>Create a new user</h1>
 
         <form>
           <InputEmail
@@ -53,7 +56,10 @@ class RegistrationPage extends Component {
             />
 
           <button
-            type="submit">
+            type="button"
+            disabled={Boolean(!state.email || !state.pw || !state.dob || !state.gender)}
+            onClick={this.handleSubmit}
+            >
             Create User
           </button>
 

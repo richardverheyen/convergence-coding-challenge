@@ -8,7 +8,7 @@ class InputDob extends Component {
     this.state = {
       valueDay: "",
       valueMonth: "",
-      valueYear: ""
+      valueYear: "",
     }
 
     this.combineValues = this.combineValues.bind(this);
@@ -21,15 +21,10 @@ class InputDob extends Component {
       valueYear
     } = this.state;
 
-    let string = valueDay;
-    if (valueMonth) {
-      string = string + "/" + valueMonth;
-    }
-    if (valueYear) {
-      string = string + "/" + valueYear;
-    }
+    const dateObject = new Date(`${valueYear}/${valueMonth}/${valueDay}`);
 
-    this.props.handleChange(string);
+    // Allows bad dates to make it back to the parent element
+    this.props.handleChange(dateObject.toString());
   }
 
   render() {
@@ -38,43 +33,55 @@ class InputDob extends Component {
         <label htmlFor="dob-year">Year</label>
         <input
           required
-          type="number"
+          type="string"
           placeholder="YYYY"
           name="dob-year"
-          max="2021"
+          pattern="^(19|20)\d{2}$"
           id="dob-year"
           value={this.state.valueYear}
           onChange={e => {
-            this.setState({valueYear: e.target.value});
-            this.combineValues();
+            this.setState(
+              {
+                valueYear: e.target.value
+              },
+              this.combineValues
+            );
           }}/>
 
         <label htmlFor="dob-day">Day</label>
         <input
           required
-          type="number"
+          type="string"
           placeholder="DD"
           name="dob-day"
-          max="31"
+          pattern="^(0[1-9]|[12]\d|3[01])$"
           id="dob-day"
           value={this.state.valueDay}
           onChange={e => {
-            this.setState({valueDay: e.target.value});
-            this.combineValues();
+            this.setState(
+              {
+                valueDay: e.target.value
+              },
+              this.combineValues
+            );
           }}/>
 
         <label htmlFor="dob-month">Month</label>
         <input
           required
-          type="number"
+          type="string"
           placeholder="MM"
-          max="12"
+          pattern="^(0[1-9]|1[012])$"
           name="dob-month"
           id="dob-month"
           value={this.state.valueMonth}
           onChange={e => {
-            this.setState({valueMonth: e.target.value});
-            this.combineValues();
+            this.setState(
+              {
+                valueMonth: e.target.value
+              },
+              this.combineValues
+            );
           }}/>
       </fieldset>
     )
