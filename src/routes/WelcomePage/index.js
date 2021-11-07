@@ -10,17 +10,16 @@ import "./style.scss";
 function WelcomePage() {
   return (
     <div className="WelcomePage">
-      WelcomePage
 
-        <Link to="/login">
-          <Button className="secondary">
-            Login
+        <Link to="/registration">
+          <Button className="secondary large">
+            New User
           </Button>
         </Link>
 
-        <Link to="/registration">
-          <Button className="secondary">
-            Register
+        <Link to="/login">
+          <Button className="secondary large">
+            Existing User
           </Button>
         </Link>
 

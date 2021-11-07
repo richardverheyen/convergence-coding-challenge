@@ -43,6 +43,7 @@ function Router() {
             <RegistrationPage />
           }
         />
+
       </Routes>
     </AuthProvider>
   );

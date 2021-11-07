@@ -16,8 +16,6 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <h1>LoginPage</h1>
-
       <Link to="/welcome">Go back</Link>
 
       <InputEmail

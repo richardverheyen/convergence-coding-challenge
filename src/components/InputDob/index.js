@@ -45,7 +45,7 @@ class InputDob extends Component {
           name="dob-year"
           pattern="^(19|20)\d{2}$"
           id="dob-year"
-          autocomplete="off"
+          autoComplete="off"
           value={this.state.valueYear}
           onChange={e => {
             this.setState(
@@ -63,7 +63,7 @@ class InputDob extends Component {
           name="dob-day"
           pattern="^(0[1-9]|[12]\d|3[01])$"
           id="dob-day"
-          autocomplete="off"
+          autoComplete="off"
           value={this.state.valueDay}
           onChange={e => {
             this.setState(
@@ -81,7 +81,7 @@ class InputDob extends Component {
           pattern="^(0[1-9]|1[012])$"
           name="dob-month"
           id="dob-month"
-          autocomplete="off"
+          autoComplete="off"
           value={this.state.valueMonth}
           onChange={e => {
             this.setState(

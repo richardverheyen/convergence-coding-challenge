@@ -1,19 +1,10 @@
 .App {
-}
-
-.RegistrationPage {
-  display: flex;
-  flex-direction: column;
-}
-
-input, button {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 20px;
+  min-height: 500px;
   margin: auto;
-}
-
-input:invalid {
-  box-shadow: 0 0 5px 1px red;
-}
-
-input:focus:invalid {
-  box-shadow: none;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 4px;
 }

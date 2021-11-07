@@ -1,5 +1,5 @@
 button.button {
-  line-height: 38px;
+  line-height: 42px;
   border-radius: 4px;
   padding: 0 12px;
   min-width: 140px;
@@ -9,6 +9,12 @@ button.button {
   text-transform: uppercase;
   letter-spacing: 0.2px;
   font-weight: 700;
+  user-select: none;
+
+  &.large {
+    max-width: 400px;
+    width: 100%;
+  }
 
   &.primary {
     background-color: #6200ee;

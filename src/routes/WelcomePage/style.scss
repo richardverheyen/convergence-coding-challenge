@@ -1,4 +1,10 @@
 .WelcomePage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  a:not(:last-child) {
+    margin-bottom: 24px;
+  }
 }

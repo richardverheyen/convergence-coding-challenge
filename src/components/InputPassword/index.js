@@ -24,7 +24,6 @@ function InputPassword(props) {
         pattern={patternRegexString}
         value={props.value}
         onChange={props.handleChange}/>
-      <p className="character-count">{props.value.length}/12</p>
     </fieldset>
   )
 }
