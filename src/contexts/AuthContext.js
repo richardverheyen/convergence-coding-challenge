@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 
 // Initialises state or actions for this context group
-const AuthContext = React.createContext();
-const AuthUpdateContext = React.createContext();
+export const AuthContext = React.createContext();
+export const AuthUpdateContext = React.createContext();
 
 // Export hooks for accessing this context
 export function useAuth() {
