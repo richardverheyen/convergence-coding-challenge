@@ -1,3 +1,5 @@
+import './style.scss';
+
 function InputPassword(props) {
   // condition a: min of 6 char. max 12
   // condition b: contain min 2 alphabets.
@@ -10,7 +12,7 @@ function InputPassword(props) {
   // full string ^(?=(.*[a-zA-Z]){2,})(?=.*[a-zA-Z0-9]).{6,12}$
 
   return (
-    <fieldset>
+    <fieldset className="password">
       <label htmlFor="pw">Password</label>
       <input
         required
@@ -22,6 +24,7 @@ function InputPassword(props) {
         pattern={patternRegexString}
         value={props.value}
         onChange={props.handleChange}/>
+      <p className="character-count">{props.value.length}/12</p>
     </fieldset>
   )
 }

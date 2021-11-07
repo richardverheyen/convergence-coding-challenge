@@ -1,6 +1,8 @@
+import './style.scss';
+
 function InputPasswordCheck(props) {
   return (
-    <fieldset>
+    <fieldset className="password-check">
       <label htmlFor="pw-check">Retype Password</label>
       <input
         required

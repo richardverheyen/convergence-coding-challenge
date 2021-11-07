@@ -1,8 +1,9 @@
-import InputEmail from "./InputEmail";
-import InputPassword from "./InputPassword";
-import InputPasswordCheck from "./InputPasswordCheck";
-import InputDob from "./InputDob";
-import InputGender from "./InputGender";
+import InputEmail from "./InputEmail/";
+import InputPassword from "./InputPassword/";
+import InputPasswordCheck from "./InputPasswordCheck/";
+import InputDob from "./InputDob/";
+import InputGender from "./InputGender/";
+import Button from "./Button/";
 
 export {
   InputEmail,
@@ -10,4 +11,5 @@ export {
   InputPasswordCheck,
   InputDob,
   InputGender,
+  Button
 }

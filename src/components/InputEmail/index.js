@@ -1,6 +1,8 @@
+import './style.scss';
+
 function InputEmail(props) {
   return (
-    <fieldset>
+    <fieldset className="email">
       <label htmlFor="email">Email</label>
       <input
         required

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useAuthUpdate } from "../contexts/AuthContext";
+import { useAuthUpdate } from "contexts/AuthContext";
 import {
   InputEmail,
   InputPassword,
   InputPasswordCheck,
   InputDob,
-  InputGender
-} from "../components/";
+  InputGender,
+  Button
+} from "components/";
 
 function RegistrationPage() {
 
@@ -22,41 +23,37 @@ function RegistrationPage() {
       <Link to="/welcome">Go back</Link>
       <h1>Create a new user</h1>
 
-      <form>
-        <InputEmail
-          value={email}
-          handleChange={e => setEmail(e.target.value)}
-          />
-        <InputPassword
-          value={pw}
-          handleChange={e => setPw(e.target.value)}
-          />
-        <InputPasswordCheck
-          pattern={pw}
-          />
-        <InputDob
-          value={dob}
-          handleChange={string => setDob(string)}
-          />
-        <InputGender
-          value={gender}
-          handleChange={e => setGender(e.target.value)}
-          />
+      <InputEmail
+        value={email}
+        handleChange={e => setEmail(e.target.value)}
+        />
+      <InputPassword
+        value={pw}
+        handleChange={e => setPw(e.target.value)}
+        />
+      <InputPasswordCheck
+        pattern={pw}
+        />
+      <InputDob
+        value={dob}
+        handleChange={string => setDob(string)}
+        />
+      <InputGender
+        value={gender}
+        handleChange={e => setGender(e.target.value)}
+        />
 
-        <button
-          type="button"
-          disabled={Boolean(!email || !pw || !dob || !gender)}
-          onClick={useAuthUpdate({
-            email,
-            pw,
-            dob,
-            gender
-          })}
-          >
-          Create User
-        </button>
-
-      </form>
+      <Button
+        className="primary"
+        disabled={Boolean(!email || !pw || !dob || !gender)}
+        onClick={useAuthUpdate({
+          email,
+          pw,
+          dob,
+          gender
+        })}>
+        Create User
+      </Button>
 
     </div>
   );

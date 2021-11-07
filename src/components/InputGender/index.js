@@ -1,6 +1,8 @@
+import './style.scss';
+
 function InputGender(props) {
   return (
-    <fieldset>
+    <fieldset className="gender">
       <label htmlFor="gender">Gender</label>
 
       <select
@@ -9,7 +11,7 @@ function InputGender(props) {
         name="gender"
         value={props.value}
         onChange={props.handleChange}>
-        <option value="" selected disabled hidden>Choose here</option>
+        <option value="" disabled hidden>Choose here</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>

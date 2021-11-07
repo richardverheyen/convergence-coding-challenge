@@ -1,5 +1,5 @@
 import HomePage from "./HomePage";
-import WelcomePage from "./WelcomePage";
+import WelcomePage from "./WelcomePage/";
 import LoginPage from "./LoginPage";
 import RegistrationPage from "./RegistrationPage";
 
