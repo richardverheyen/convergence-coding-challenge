@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 function InputGender(props) {
   return (
     <fieldset>

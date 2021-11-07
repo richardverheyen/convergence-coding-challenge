@@ -23,8 +23,14 @@ class InputDob extends Component {
 
     const dateObject = new Date(`${valueYear}/${valueMonth}/${valueDay}`);
 
-    // Allows bad dates to make it back to the parent element
-    this.props.handleChange(dateObject.toString());
+    function isValidDate(date) {
+      return isNaN(Date.parse(date)) === false;
+    }
+
+    if (isValidDate(dateObject)) {
+      console.log({dateObject})
+      this.props.handleChange(dateObject.toString());
+    }
   }
 
   render() {

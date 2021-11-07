@@ -1,11 +1,6 @@
 import {
   Routes,
   Route,
-  Link,
-  useNavigate,
-  useLocation,
-  Navigate,
-  Outlet
 } from "react-router-dom";
 
 import AuthenticatedRoute from "./AuthenticatedRoute";

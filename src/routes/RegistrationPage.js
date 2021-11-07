@@ -36,7 +36,7 @@ function RegistrationPage() {
           />
         <InputDob
           value={dob}
-          handleChange={e => setDob(e.target.value)}
+          handleChange={string => setDob(string)}
           />
         <InputGender
           value={gender}

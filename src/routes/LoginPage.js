@@ -11,10 +11,10 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      LoginPage
+      <h1>LoginPage</h1>
 
       <Link to="/welcome">Go back</Link>
-      // <Link to="/">Login</Link>
+      {/*<Link to="/">Login</Link>*/}
 
       <p>{`${authenticated ? "" : "NOT"} logged in`}</p>
 
