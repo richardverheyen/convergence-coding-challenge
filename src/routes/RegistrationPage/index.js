@@ -36,6 +36,10 @@ function RegistrationPage() {
 
     const storedUsers = JSON.parse(localStorage.getItem('users') || "[]");
     localStorage.setItem('users', JSON.stringify([...storedUsers, newUser]));
+
+    window.alert('success');
+
+    window.location.href = "/login";
   }
 
   return (

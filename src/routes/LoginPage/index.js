@@ -25,22 +25,24 @@ function LoginPage() {
       <Link to="/welcome">Go back</Link>
       <h1>Log In</h1>
 
-      <InputEmail
-        value={email}
-        inputRef={emailInput}
-        handleChange={e => setEmail(e.target.value)}
-        />
-      <InputPassword
-        value={pw}
-        inputRef={pwInput}
-        handleChange={e => setPw(e.target.value)}
-        />
+      <form>
+        <InputEmail
+          value={email}
+          inputRef={emailInput}
+          handleChange={e => setEmail(e.target.value)}
+          />
+        <InputPassword
+          value={pw}
+          inputRef={pwInput}
+          handleChange={e => setPw(e.target.value)}
+          />
 
-      <Button
-        className="primary"
-        >
-        Log In
-      </Button>
+        <Button
+          className="primary"
+          >
+          Log In
+        </Button>
+      </form>
     </div>
   );
 }
