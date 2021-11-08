@@ -8,6 +8,7 @@ function InputDob(props) {
   const [year, setYear] = useState("");
 
   useEffect(() => {
+    // this allows for incorrect/incomplete data to make it to the parent
     const dateObject = new Date(`${year}/${month}/${day}`);
 
     function isValidDate(date) {
@@ -20,6 +21,8 @@ function InputDob(props) {
     }
   })
 
+  // Split the dob into 3 input fields to force users to adhere to the weird yyyy/dd/mm format.
+  // makes concatenating the values together more explicit, no chance of locale errors.
   return (
     <fieldset className="dob">
       <label htmlFor="dob-year">Date of birth</label>

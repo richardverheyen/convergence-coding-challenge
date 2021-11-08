@@ -34,6 +34,7 @@ function RegistrationPage() {
       gender
     };
 
+    // I would have moved this to a Context but it was faster to keep it here + we don't retrieve user data in a way to justify it.
     const storedUsers = JSON.parse(localStorage.getItem('users') || "[]");
     localStorage.setItem('users', JSON.stringify([...storedUsers, newUser]));
 
