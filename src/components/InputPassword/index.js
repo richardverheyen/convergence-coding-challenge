@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './style.scss';
 
 function InputPassword(props) {
-  // explaining lookaheads in regex: https://www.youtube.com/watch?v=4Y9W4uY0B4s
 
   const pwConditionA = ".{6,12}"; //contain min of 6 char. max 12
   const pwConditionB = "(?=.*[a-zA-Z].*[a-zA-Z].*)"; //contain min 2 alphabetic characters.
@@ -37,12 +36,10 @@ function InputPassword(props) {
 
   useEffect(() => {
     props.inputRef.current.addEventListener('invalid', handleCustomValidation);
-    return props.inputRef.current.removeEventListener('invalid', handleCustomValidation);
   }, [props.inputRef]);
 
   useEffect(() => {
     props.inputRef.current.addEventListener('change', clearCustomValidation);
-    return props.inputRef.current.removeEventListener('change', clearCustomValidation);
   }, [props.inputRef])
 
   return (
@@ -52,6 +49,18 @@ function InputPassword(props) {
         required
         type="password"
         name="password"
+        onCopy={(e)=>{
+          e.preventDefault()
+          return false;
+        }}
+        onCut={(e)=>{
+          e.preventDefault()
+          return false;
+        }}
+        onDrag={(e)=>{
+          e.preventDefault()
+          return false;
+        }}
         id="pw"
         ref={props.inputRef}
         pattern={patternRegexString}

@@ -6,7 +6,6 @@ function InputPasswordCheck(props) {
 
   const handleCustomValidation = useCallback(e => {
     if (e.target.validity.patternMismatch) {
-
       if (!new RegExp(`^${props.pattern}$`).test(e.target.value)) {
         e.target.setCustomValidity('Passwords must match.');
       }
@@ -19,13 +18,11 @@ function InputPasswordCheck(props) {
 
   useEffect(() => {
     inputRef.current.addEventListener('invalid', handleCustomValidation);
-    return inputRef.current.removeEventListener('invalid', handleCustomValidation);
-  }, [inputRef, handleCustomValidation]);
+  }, [handleCustomValidation]);
 
   useEffect(() => {
     inputRef.current.addEventListener('change', clearCustomValidation);
-    return inputRef.current.removeEventListener('change', clearCustomValidation);
-  }, [inputRef, handleCustomValidation])
+  }, [handleCustomValidation])
 
   return (
     <fieldset className="password-check">
@@ -35,6 +32,10 @@ function InputPasswordCheck(props) {
         type="password"
         name="password check"
         id="pw-check"
+        onCopy={e => e.preventDefault()}
+        onCut={e => e.preventDefault()}
+        onDrag={e => e.preventDefault()}
+        onPaste={e => e.preventDefault()}
         ref={inputRef}
         pattern={props.pattern}
         />

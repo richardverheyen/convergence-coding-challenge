@@ -5,9 +5,8 @@ import {
 function HomePage() {
   return (
     <div className="HomePage">
-      HomePage
-
-      <p>You must be authenticated!</p>
+      <h1>HomePage</h1>
+      <p>You're in the protected route</p>
 
       <Link to="/welcome">Go back</Link>
     </div>
