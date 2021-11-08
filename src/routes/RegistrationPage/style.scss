@@ -1,0 +1,26 @@
+.RegistrationPage {
+  > a {
+    display: block;
+    margin-bottom: 8px;
+  }
+  h1 {
+    margin-bottom: 24px;
+  }
+  form {
+    input,
+    select {
+      &:valid:not(:focus) {
+        border-bottom-color: #4caf50;
+      }
+    }
+
+    &.submitted {
+      input,
+      select {
+        &:invalid {
+          border-bottom-color: #b00020;
+        }
+      }
+    }
+  }
+}

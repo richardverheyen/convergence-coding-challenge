@@ -34,7 +34,6 @@ function InputDob(props) {
         autoComplete="off"
         value={year}
         onChange={e => setYear(e.target.value)}/>
-
       <input
         required
         type="string"
@@ -46,7 +45,6 @@ function InputDob(props) {
         autoComplete="off"
         value={day}
         onChange={e => setDay(e.target.value)}/>
-
       <input
         required
         type="string"

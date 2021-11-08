@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import "./style.scss";
 
 import {
   InputEmail,
@@ -18,7 +19,6 @@ function RegistrationPage() {
 
   const emailInput = useRef(null);
   const pwInput = useRef(null);
-  const pwCheckInput = useRef(null);
   const dobDayInput = useRef(null);
   const dobMonthInput = useRef(null);
   const dobYearInput = useRef(null);
@@ -26,8 +26,16 @@ function RegistrationPage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('validate form', emailInput.current, emailInput.current.checkValidity());
+    const newUser = {
+      email,
+      pw,
+      dob,
+      gender
+    };
+    // console.log('submit data:', {newUser});
 
+    const storedUsers = JSON.parse(localStorage.getItem('users') || "[]");
+    localStorage.setItem('users', JSON.stringify([...storedUsers, newUser]));
   }
 
   return (
@@ -35,7 +43,8 @@ function RegistrationPage() {
       <Link to="/welcome">Go back</Link>
       <h1>Create a new user</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}>
         <InputEmail
           value={email}
           inputRef={emailInput}
@@ -48,7 +57,6 @@ function RegistrationPage() {
           />
         <InputPasswordCheck
           pattern={pw}
-          inputRef={pwCheckInput}
           />
         <InputDob
           value={dob}
