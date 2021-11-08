@@ -5,12 +5,13 @@ Richard Verheyen, 9 Nov 2021
 You will need the following things properly installed on your computer.
 
 - Git
-- Node.js
+- Node
 - Yarn
 
 ## Installation
 - git clone <repository-url> this repository
 - cd convergence-challenge-rv
+- nvm install
 - yarn install
 
 ## Building
