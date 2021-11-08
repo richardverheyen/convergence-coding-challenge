@@ -1,5 +1,7 @@
 button.button {
+  position: relative;
   line-height: 42px;
+  min-height: 42px;
   border-radius: 4px;
   padding: 0 12px;
   min-width: 140px;
@@ -61,6 +63,45 @@ button.button {
     &:disabled {
       color: #878787;
       cursor: default;
+    }
+  }
+
+  .ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+  }
+  .ring:before,
+  .ring:after {
+    content: '';
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: 8px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    animation: ring-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .ring:before {
+    animation-delay: -0.45s;
+  }
+  .ring:after {
+    animation-delay: -0.3s;
+  }
+
+  @keyframes ring-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

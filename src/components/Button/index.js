@@ -7,7 +7,9 @@ function Button(props) {
       disabled={props.disabled}
       onClick={props.onClick}
       name={props.name}>
-      {props.children}
+      {
+        props.loading ? <div className="ring" /> : props.children
+      }
     </button>
   )
 }

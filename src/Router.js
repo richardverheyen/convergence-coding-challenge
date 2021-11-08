@@ -3,8 +3,8 @@ import {
   Route,
 } from "react-router-dom";
 
-// import AuthenticatedRoute from "./AuthenticatedRoute";
-// import { AuthProvider } from "./contexts/AuthContext";
+import AuthenticatedRoute from "AuthenticatedRoute";
+import { AuthenticatedProvider } from "contexts/AuthenticatedContext";
 
 import {
   HomePage,
@@ -15,33 +15,37 @@ import {
 
 function Router() {
   return (
-      <Routes>
-        <Route
-          path="/"
-          element={
-              <HomePage />
-          }
-        />
-        <Route
-          path="/welcome"
-          element={
-            <WelcomePage />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <LoginPage />
-          }
-        />
-        <Route
-          path="/registration"
-          element={
-            <RegistrationPage />
-          }
-        />
+    <AuthenticatedProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AuthenticatedRoute>
+                <HomePage />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route
+            path="/welcome"
+            element={
+              <WelcomePage />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <LoginPage />
+            }
+          />
+          <Route
+            path="/registration"
+            element={
+              <RegistrationPage />
+            }
+          />
 
-      </Routes>
+        </Routes>
+    </AuthenticatedProvider>
   );
 }
 

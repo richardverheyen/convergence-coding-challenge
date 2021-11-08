@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './style.scss';
 
 import {
@@ -8,24 +9,40 @@ import {
   Button
 } from "components/";
 
-import { useAuth, useAuthUpdate } from "contexts/AuthContext";
+import { useSignIn } from "contexts/AuthenticatedContext";
 // these are called hooks, they are how you grab contexts directly from the Context file
 
 function LoginPage() {
+  const navigate = useNavigate();
+  const signIn = useSignIn();
 
   const emailInput = useRef(null);
   const pwInput = useRef(null);
 
-
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+  const [loading, setLoading]= useState(false);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      setLoading(true);
+      await signIn({email, pw});
+      navigate("/");
+
+    } catch (e) {
+      setLoading(false);
+      setEmail("");
+      setPw("");
+    }
+  }
 
   return (
     <div className="LoginPage">
       <Link to="/welcome">Go back</Link>
       <h1>Log In</h1>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputEmail
           value={email}
           inputRef={emailInput}
@@ -39,6 +56,8 @@ function LoginPage() {
 
         <Button
           className="primary"
+          disabled={loading}
+          loading={loading}
           >
           Log In
         </Button>
