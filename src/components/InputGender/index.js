@@ -9,6 +9,7 @@ function InputGender(props) {
         required
         id="gender"
         name="gender"
+        ref={props.inputRef}
         value={props.value}
         onChange={props.handleChange}>
         <option value="" disabled hidden>Choose here</option>

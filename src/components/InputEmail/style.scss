@@ -31,7 +31,9 @@ fieldset.email {
       border-bottom-color: #6200ee;
       background: #e8e8e8;
     }
+  }
 
+  input.submitted {
     &:invalid {
       border-bottom-color: #b00020;
     }

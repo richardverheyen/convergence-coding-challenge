@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "contexts/AuthContext";
 import {
   InputEmail,
   InputPassword,
@@ -12,36 +11,23 @@ import {
 } from "components/";
 
 function RegistrationPage() {
-
-  const {user, setUser} = AuthContext;
-
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
 
+  const emailInput = useRef(null);
+  const pwInput = useRef(null);
+  const pwCheckInput = useRef(null);
+  const dobDayInput = useRef(null);
+  const dobMonthInput = useRef(null);
+  const dobYearInput = useRef(null);
+  const genderInput = useRef(null);
+
   function handleSubmit(event) {
     event.preventDefault();
+    console.log('validate form', emailInput.current, emailInput.current.checkValidity());
 
-    console.log('validate form');
-
-    setEmail(email);
-    // useAuthUpdate({
-    //   email,
-    //   pw,
-    //   dob,
-    //   gender
-    // })
-
-    // auth.signin(username, () => {
-      // Send them back to the page they tried to visit when they were
-      // redirected to the login page. Use { replace: true } so we don't create
-      // another entry in the history stack for the login page.  This means that
-      // when they get to the protected page and click the back button, they
-      // won't end up back on the login page, which is also really nice for the
-      // user experience.
-      // navigate(from, { replace: true });
-    // });
   }
 
   return (
@@ -49,32 +35,41 @@ function RegistrationPage() {
       <Link to="/welcome">Go back</Link>
       <h1>Create a new user</h1>
 
-      <InputEmail
-        value={email}
-        handleChange={e => setEmail(e.target.value)}
-        />
-      <InputPassword
-        value={pw}
-        handleChange={e => setPw(e.target.value)}
-        />
-      <InputPasswordCheck
-        pattern={pw}
-        />
-      <InputDob
-        value={dob}
-        handleChange={string => setDob(string)}
-        />
-      <InputGender
-        value={gender}
-        handleChange={e => setGender(e.target.value)}
-        />
+      <form onSubmit={handleSubmit}>
+        <InputEmail
+          value={email}
+          inputRef={emailInput}
+          handleChange={e => setEmail(e.target.value)}
+          />
+        <InputPassword
+          value={pw}
+          inputRef={pwInput}
+          handleChange={e => setPw(e.target.value)}
+          />
+        <InputPasswordCheck
+          pattern={pw}
+          inputRef={pwCheckInput}
+          />
+        <InputDob
+          value={dob}
+          inputDayRef={dobDayInput}
+          inputMonthRef={dobMonthInput}
+          inputYearRef={dobYearInput}
+          handleChange={string => setDob(string)}
+          />
+        <InputGender
+          value={gender}
+          inputRef={genderInput}
+          handleChange={e => setGender(e.target.value)}
+          />
 
-      <Button
-        className="primary"
-        disabled={Boolean(!email || !pw || !dob || !gender)}
-        onClick={handleSubmit}>
-        Create User
-      </Button>
+        <Button
+          className="primary"
+          disabled={Boolean(!email || !pw || !dob || !gender)}>
+          Create User
+        </Button>
+
+      </form>
 
     </div>
   );

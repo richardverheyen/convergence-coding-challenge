@@ -9,6 +9,7 @@ function InputEmail(props) {
         type="email"
         name="email"
         id="email"
+        ref={props.inputRef}
         value={props.value}
         onChange={props.handleChange}/>
     </fieldset>

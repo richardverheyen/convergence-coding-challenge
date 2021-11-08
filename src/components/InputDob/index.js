@@ -15,7 +15,7 @@ function InputDob(props) {
     }
 
     if (isValidDate(dateObject)) {
-      console.log({dateObject})
+      // console.log({dateObject})
       props.handleChange(dateObject.toString());
     }
   })
@@ -30,6 +30,7 @@ function InputDob(props) {
         name="dob-year"
         pattern="^(19|20)\d{2}$"
         id="dob-year"
+        ref={props.inputYearRef}
         autoComplete="off"
         value={year}
         onChange={e => setYear(e.target.value)}/>
@@ -41,6 +42,7 @@ function InputDob(props) {
         name="dob-day"
         pattern="^(0[1-9]|[12]\d|3[01])$"
         id="dob-day"
+        ref={props.inputDayRef}
         autoComplete="off"
         value={day}
         onChange={e => setDay(e.target.value)}/>
@@ -53,6 +55,7 @@ function InputDob(props) {
         name="dob-month"
         id="dob-month"
         autoComplete="off"
+        ref={props.inputMonthRef}
         value={month}
         onChange={e => setMonth(e.target.value)}/>
     </fieldset>

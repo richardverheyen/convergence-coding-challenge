@@ -3,8 +3,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import AuthenticatedRoute from "./AuthenticatedRoute";
-import { AuthProvider } from "./contexts/AuthContext";
+// import AuthenticatedRoute from "./AuthenticatedRoute";
+// import { AuthProvider } from "./contexts/AuthContext";
 
 import {
   HomePage,
@@ -15,14 +15,11 @@ import {
 
 function Router() {
   return (
-    <AuthProvider>
       <Routes>
         <Route
           path="/"
           element={
-            <AuthenticatedRoute>
               <HomePage />
-            </AuthenticatedRoute>
           }
         />
         <Route
@@ -45,7 +42,6 @@ function Router() {
         />
 
       </Routes>
-    </AuthProvider>
   );
 }
 

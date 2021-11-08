@@ -11,6 +11,7 @@ function InputPasswordCheck(props) {
         minLength="6"
         maxLength="12"
         id="pw-check"
+        ref={props.inputRef}
         pattern={props.pattern}
         />
     </fieldset>
