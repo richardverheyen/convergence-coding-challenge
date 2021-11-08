@@ -1,10 +1,3 @@
-// has a function which accepts username and password, validates in localstorage
-// does the mocked network delay
-// accepts a callback for doing the return navgation
-
-// sets isAuthenticated to true;
-// has a Provider which wraps around protected routes
-
 import React, { useContext, useState, createContext } from 'react';
 
 export const AuthenticatedContext = createContext();
@@ -15,12 +8,14 @@ export function AuthenticatedProvider({ children }) {
 
   async function signIn({email, pw}) {
     return new Promise((resolve, reject) => {
+
+      // takes an array of users, or an empty array from localStorage
       const storedUsers = JSON.parse(localStorage.getItem('users') || "[]");
       const matchUser = storedUsers.find(user => user.email === email && user.pw === pw);
 
       setTimeout(() => {
         if (matchUser) {
-          setAuthenticated(matchUser.email);
+          setAuthenticated(true);
           resolve();
         } else {
           reject();

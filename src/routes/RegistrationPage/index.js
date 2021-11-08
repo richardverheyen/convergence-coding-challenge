@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./style.scss";
 
 import {
@@ -12,6 +13,7 @@ import {
 } from "components/";
 
 function RegistrationPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [dob, setDob] = useState("");
@@ -32,14 +34,13 @@ function RegistrationPage() {
       dob,
       gender
     };
-    // console.log('submit data:', {newUser});
 
     const storedUsers = JSON.parse(localStorage.getItem('users') || "[]");
     localStorage.setItem('users', JSON.stringify([...storedUsers, newUser]));
 
     window.alert('success');
 
-    window.location.href = "/login";
+    navigate("/login");
   }
 
   return (

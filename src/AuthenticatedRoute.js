@@ -6,6 +6,7 @@ function AuthenticatedRoute({children}) {
   let location = useLocation();
 
   if (!authenticated) {
+    // navigate non-authenticated sessions to the welcome route
     return <Navigate to="/welcome" state={{ from: location }} />;
   }
 

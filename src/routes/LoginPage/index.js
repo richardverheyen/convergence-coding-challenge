@@ -32,6 +32,7 @@ function LoginPage() {
 
     } catch (e) {
       setLoading(false);
+      window.alert('Email and Password combination not found, try again.');
       setEmail("");
       setPw("");
     }
